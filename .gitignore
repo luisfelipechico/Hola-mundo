@@ -4,3 +4,98 @@
 *.jar
 *.war
 *.ear
+package diccionario.multileguaje;
+ 
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+/**
+ *
+ * @author Felipe
+ */
+public class Main extends JFrame {
+   private JPanel contentPane;
+ 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+         EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                                try {
+                                        Main frame = new Main();
+                                        frame.setVisible(true);
+                                        frame.getContentPane().setBackground(Color.LIGHT_GRAY);
+                                } catch (Exception e) {
+                                        e.printStackTrace();
+                                }
+                        }
+                });
+   
+    }
+    /* Create the frame.
+         */
+   public Main() {
+                setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                setBounds(100, 100, 354, 158);
+                contentPane = new JPanel();
+                
+                contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+                setContentPane(contentPane);
+                contentPane.setLayout(null);
+               
+                JLabel lblHolaMundoMulti = new JLabel("Hola Mundo Multi Idiomas");
+                lblHolaMundoMulti.setBounds(-35, 5, 424, 23);
+                lblHolaMundoMulti.setHorizontalAlignment(SwingConstants.CENTER);
+                lblHolaMundoMulti.setFont(new Font("Tahoma", Font.PLAIN, 19));
+                lblHolaMundoMulti.setForeground(new Color(0, 0, 0));
+                contentPane.add(lblHolaMundoMulti);
+               
+                final JLabel lblMensaje = new JLabel("");
+                lblMensaje.setForeground(Color.black);
+                lblMensaje.setBounds(-35, 39, 424, 34);
+                lblMensaje.setFont(new Font("Tahoma", Font.PLAIN, 16));
+                lblMensaje.setHorizontalAlignment(SwingConstants.CENTER);
+                contentPane.add(lblMensaje);
+               
+                JButton btnSaludo = new JButton("Saludo");
+                btnSaludo.setForeground(Color.blue);
+                btnSaludo.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent arg0) {
+                                        String[] palabras={"Hello world","Hallo Welt","Salam Dünya","مرحبا العالم","Dia duit","Прывітанне свет","Hola món","你好世界","안녕하세요","Alo Mondyal","Hej Verden","Ciao mondo","привет мир","Merhaba Dünya","Hola Mundo"};
+                                        String frase=palabras[(int) (Math.random()*palabras.length)] ;
+                                        lblMensaje.setText(frase);
+                        }
+                });
+                btnSaludo.setBounds(10, 84, 89, 23);
+                contentPane.add(btnSaludo);
+               
+                JButton btnLimpiar = new JButton("Limpiar");
+                btnLimpiar.setForeground(Color.blue);
+                btnLimpiar.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent arg0) {
+                                lblMensaje.setText("");
+                        }
+                });
+                btnLimpiar.setBounds(130, 84, 89, 23);
+                contentPane.add(btnLimpiar);
+               
+                JButton btnSalir = new JButton("Salir");
+                btnSalir.setForeground(Color.blue);
+                btnSalir.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                                System.exit(0);
+                        }
+                });
+                btnSalir.setBounds(239, 84, 89, 23);
+                contentPane.add(btnSalir);
+}
+}
